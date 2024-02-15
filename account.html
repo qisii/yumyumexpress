@@ -71,7 +71,7 @@
             </div>
 
             <div class="reminder">
-              <span id="phoneReminder">Please enter your phone number.</span>
+              <span id="phoneReminder"></span>
             </div>
 
             <div class="field input-field btn-field">
@@ -79,8 +79,125 @@
             </div>
           </form>
         </div>
+        <div class="toast account" id="toast account">
+          <div class="message">
+            <h3>Success!</h3>
+            <p>Updated successfully</p>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- js scripts -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        child,
+        update,
+        remove,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyACybXWMQQyN1QFhEbiLTfZ0n-bAVHQqII",
+        authDomain: "yumyum-781e7.firebaseapp.com",
+        projectId: "yumyum-781e7",
+        storageBucket: "yumyum-781e7.appspot.com",
+        messagingSenderId: "722586076935",
+        appId: "1:722586076935:web:12f241bde223a2eb5f27a2",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      const db = getDatabase(app);
+      const updateForm = document.getElementById("updateForm");
+      const phoneInput = document.getElementById("phone");
+      const phoneReminder = document.getElementById("phoneReminder");
+      const toast = document.querySelector(".toast.account");
+      const errorMessageElement = document.querySelector(
+        "#toast#account .message p"
+      );
+
+      // Function to update reminder message based on phone number
+      function updateReminder() {
+        // Get input value and remove any non-numeric characters
+        let phoneNumber = phoneInput.value.replace(/\D/g, "");
+
+        phoneInput.value = phoneNumber;
+
+        // Update reminder message based on whether phone number is empty or not
+        if (phoneNumber.trim() === "") {
+          phoneReminder.textContent = "Please enter your phone number.";
+        } else {
+          phoneReminder.textContent =
+            "Please make sure this number is available.";
+        }
+      }
+
+      // Add event listener to the phone input field
+      phoneInput.addEventListener("input", updateReminder);
+
+      updateForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // prevent form submission
+
+        const updatedFirstname = document.getElementById("firstname").value;
+        const updatedLastname = document.getElementById("lastname").value;
+        const updatedEmail = document.getElementById("email").value;
+        const updatedPhone = document.getElementById("phone").value;
+
+        // Get user ID from session storage
+        const userCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        const userId = userCreds.uid;
+
+        // Update user data in Firebase Realtime Database
+        update(ref(db, "users/" + userId), {
+          firstname: updatedFirstname,
+          lastname: updatedLastname,
+          email: updatedEmail,
+          phone: updatedPhone,
+        })
+          .then(() => {
+            console.log("User data updated successfully");
+
+            // Update user data in session storage
+            sessionStorage.setItem(
+              "user-info",
+              JSON.stringify({
+                firstname: updatedFirstname,
+                lastname: updatedLastname,
+                email: updatedEmail,
+                phone: updatedPhone,
+              })
+            );
+            toast.classList.add("active");
+            setTimeout(() => {
+              toast.classList.remove("active");
+            }, 2000);
+
+            return;
+          })
+          .catch((error) => {
+            console.error("Error updating user data:", error);
+          });
+      });
+
+      // Display user data from session storage and update reminder
+      const userInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+      if (userInfo) {
+        document.getElementById("firstname").value = userInfo.firstname;
+        document.getElementById("lastname").value = userInfo.lastname;
+        document.getElementById("email").value = userInfo.email;
+        document.getElementById("phone").value = userInfo.phone;
+
+        // Update reminder message based on phone number
+        updateReminder();
+      }
+    </script>
     <!-- custom js file -->
     <script src="js/script.js"></script>
   </body>

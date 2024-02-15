@@ -349,37 +349,59 @@ form .field {
 }
 
 .account .title {
-  margin-right: 5rem;
+  margin-right: 25%;
 }
 
 /* ============================================ order */
 .order .title {
-  margin-right: 7.5rem;
+  margin-right: 35%;
 }
 
 /* ============================================ cart */
 .cart .title {
-  margin-right: 9rem;
+  margin-right: 42%;
 }
 
 /* ============================================ toast */
+.toast-box {
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  top: 75%;
+  margin: 1rem;
+}
 .toast {
   background-color: red;
-  width: 350px;
-  min-height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* width: 350px; */
+  /* min-height: 70px; */
+  padding: 0.5rem;
+  margin: 0 5;
+  /* display: flex; */
+  /* justify-content: center;
+  align-items: center; */
   border-radius: 0.5rem;
   box-shadow: var(--box-shadow);
   position: absolute;
-  top: 75%;
+  top: 80%;
   left: -100%;
   transition: all 0.5s;
 }
 
+.toast.account {
+  width: 80%;
+  position: absolute;
+  padding: 0.5rem 1rem;
+  margin: 10%;
+  background: rgb(218, 238, 218);
+  left: -100%;
+}
+
 .toast.active {
   left: 5%;
+}
+
+.toast.account.active {
+  left: 0;
 }
 
 .bx-check,
@@ -394,6 +416,10 @@ form .field {
 
 .toast .message {
   color: var(--light);
+}
+
+.toast.account .message {
+  color: var(--light-dark);
 }
 
 /* ============================================  */
