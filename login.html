@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/logo2.png" />
+
+    <!-- custom css file -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- boxicons cdn -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- view -->
+    <meta name="view-transition" content="same-origin" />
+  </head>
+  <body>
+    <section class="container forms">
+      <div class="form login">
+        <div class="form-content">
+          <header>Login</header>
+          <form action="" id="loginForm">
+            <div class="field input-field">
+              <input
+                type="email"
+                placeholder="Email"
+                id="email"
+                class="input"
+              />
+            </div>
+            <div class="field input-field">
+              <input
+                type="password"
+                placeholder="Password"
+                id="password"
+                class="password"
+              />
+              <!-- <i class="bx bx-hide eye-icon"></i> -->
+            </div>
+            <div class="form-link">
+              <a href="#" class="forgot-pass">Forgot password?</a>
+            </div>
+            <div class="field input-field">
+              <button class="btn" type="submit">Login</button>
+            </div>
+
+            <div class="form-link">
+              <span
+                >Don't have an account?
+                <a href="signup.html" class="signup">Signup</a></span
+              >
+            </div>
+          </form>
+        </div>
+
+        <!-- <div class="line"></div> -->
+      </div>
+      <div class="toast" id="toast">
+        <div class="message">
+          <h3>Error!</h3>
+          <p>User data not found. Please try again.</p>
+        </div>
+        <i class="bx bx-x close-btn"></i>
+      </div>
+    </section>
+
+    <!-- js files/scripts -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        get,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyACybXWMQQyN1QFhEbiLTfZ0n-bAVHQqII",
+        authDomain: "yumyum-781e7.firebaseapp.com",
+        projectId: "yumyum-781e7",
+        storageBucket: "yumyum-781e7.appspot.com",
+        messagingSenderId: "722586076935",
+        appId: "1:722586076935:web:12f241bde223a2eb5f27a2",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      // initialize
+      const db = getDatabase(app);
+      const auth = getAuth(app);
+
+      const loginForm = document.getElementById("loginForm");
+      const toast = document.querySelector(".toast");
+      const errorMessageElement = document.querySelector("#toast .message p");
+      const closeBtn = document.querySelector("#toast .close-btn");
+
+      loginForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // prevent form submission
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        // Check if the user is offline
+        if (!navigator.onLine) {
+          errorMessageElement.textContent = "No internet connection";
+          toast.classList.add("active");
+          return; // Exit the function to prevent further execution
+        }
+
+        // Sign in user with email and password
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log("User signed in:", user);
+
+            // Fetch user data from Realtime Database
+            const userRef = ref(db, "users/" + userCredential.user.uid);
+            get(userRef).then((snapshot) => {
+              if (snapshot.exists()) {
+                const userData = snapshot.val();
+                console.log("User data:", userData);
+                // Store user data in session storage
+                // sessionStorage.setItem("firstname", userData.firstname);
+                // sessionStorage.setItem("lastname", userData.lastname);
+                // sessionStorage.setItem("email", userData.email);
+                sessionStorage.setItem(
+                  "user-info",
+                  JSON.stringify({
+                    firstname: userData.firstname,
+                    lastname: userData.lastname,
+                    email: userData.email,
+                  })
+                );
+                sessionStorage.setItem(
+                  "user-creds",
+                  JSON.stringify(userCredential.user)
+                );
+                // Redirect user to home.html
+                window.location.href = "home.html";
+              } else {
+                toast.classList.add("active");
+              }
+            });
+            // .catch((error) => {
+            //   console.error("Error fetching user data:", error);
+            // });
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error("Login error:", errorMessage);
+            errorMessageElement.textContent = errorMessage;
+            toast.classList.add("active");
+          });
+      });
+
+      // Close toast
+      closeBtn.addEventListener("click", function () {
+        toast.classList.remove("active");
+      });
+    </script>
+  </body>
+</html>

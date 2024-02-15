@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>yumyumexpress</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/logo2.png" />
+
+    <!-- custom css file -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- boxicons cdn -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- view -->
+    <meta name="view-transition" content="same-origin" />
+  </head>
+  <body>
+    <section class="home">
+      <div class="container">
+        <div class="header">
+          <nav class="navbar">
+            <a href="order.html"><i class="bx bxs-truck"></i></a>
+            <a href="cart.html"><i class="bx bxs-cart-alt"></i></a>
+            <a href="#"><i class="bx bxs-user" onclick="openMenu()"></i></a>
+            <div class="dropdown" id="dropdown">
+              <div class="sub-menu">
+                <a href="account.html" class="drp-link"><p>Account</p></a>
+                <button class="logout-btn drp-link" id="logout-btn">
+                  <p>Logout</p>
+                </button>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div id="msg"></div>
+        <div id="greet"></div>
+      </div>
+    </section>
+    <!-- custom js file -->
+    <script src="js/script.js"></script>
+    <script type="module">
+      let dropdown = document.getElementById("#dropdown");
+
+      function openMenu() {
+        dropdown.classList.toggle("active");
+      }
+      let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+      let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+      let msghead = document.getElementById("msg");
+      let greethead = document.getElementById("greet");
+
+      let logoutBtn = document.getElementById("logout-btn");
+
+      let Signout = () => {
+        sessionStorage.removeItem("user-creds");
+        sessionStorage.removeItem("user-info");
+        window.location.href = "index.html";
+      };
+
+      let CheckCred = () => {
+        if (!sessionStorage.getItem("user-creds")) {
+          window.location.href = "index.html";
+        } else {
+          msghead.innerText = `Welcome, ${UserCreds.email}`;
+          greethead.innerText = `Hello, ${UserInfo.firstname} ${UserInfo.lastname}`;
+        }
+      };
+
+      window.addEventListener("load", CheckCred);
+      logoutBtn.addEventListener("click", Signout);
+    </script>
+  </body>
+</html>

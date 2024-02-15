@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/logo2.png" />
+
+    <!-- custom css file -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- boxicons cdn -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- view -->
+    <meta name="view-transition" content="same-origin" />
+  </head>
+  <body>
+    <section class="container forms">
+      <div class="form login">
+        <div class="form-content">
+          <header>Signup</header>
+          <form action="" id="signupForm">
+            <div class="field input-field">
+              <input
+                type="text"
+                placeholder="Firstname"
+                id="firstname"
+                class="input"
+              />
+            </div>
+            <div class="field input-field">
+              <input
+                type="text"
+                placeholder="Lastname"
+                id="lastname"
+                class="input"
+              />
+            </div>
+            <div class="field input-field">
+              <input
+                type="email"
+                placeholder="Email"
+                id="email"
+                class="input"
+              />
+            </div>
+            <div class="field input-field">
+              <input
+                type="password"
+                placeholder="Password"
+                id="password"
+                class="password"
+              />
+              <!-- <i class="bx bx-hide eye-icon"></i> -->
+            </div>
+            <!-- <div class="field input-field">
+              <input
+                type="cpassword"
+                placeholder="Confirm Password"
+                class="password"
+              />
+              <i class="bx bx-hide eye-icon"></i>
+            </div> -->
+            <div class="field input-field">
+              <button class="btn" type="submit">Signup</button>
+            </div>
+
+            <div class="form-link">
+              <span
+                >Already have an account?
+                <a href="login.html" class="signup">Login</a></span
+              >
+            </div>
+          </form>
+        </div>
+
+        <!-- <div class="line"></div> -->
+      </div>
+
+      <div class="toast" id="toast">
+        <div class="message">
+          <h3>Error!</h3>
+          <p>User data not found. Please try again.</p>
+        </div>
+        <i class="bx bx-x close-btn"></i>
+      </div>
+    </section>
+
+    <!-- js files/scripts -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyACybXWMQQyN1QFhEbiLTfZ0n-bAVHQqII",
+        authDomain: "yumyum-781e7.firebaseapp.com",
+        projectId: "yumyum-781e7",
+        storageBucket: "yumyum-781e7.appspot.com",
+        messagingSenderId: "722586076935",
+        appId: "1:722586076935:web:12f241bde223a2eb5f27a2",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      // initialize
+      const db = getDatabase(app);
+      const auth = getAuth(app);
+
+      const signupForm = document.getElementById("signupForm");
+      const toast = document.querySelector(".toast");
+      const errorMessageElement = document.querySelector("#toast .message p");
+      const closeBtn = document.querySelector("#toast .close-btn");
+
+      signupForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // prevent form submission
+        var firstname = document.getElementById("firstname").value;
+        var lastname = document.getElementById("lastname").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        if (password.length < 6 || password.length > 8) {
+          errorMessageElement.textContent =
+            "Password must be 6-8 characters long";
+          toast.classList.add("active");
+          return;
+        }
+
+        // Sign up user with email and password
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log("User signed up:", user);
+
+            // Store user data in Realtime Database
+            set(ref(db, "users/" + user.uid), {
+              firstname: firstname,
+              lastname: lastname,
+              email: email,
+            })
+              .then(() => {
+                // Data successfully written
+                console.log("User data saved successfully");
+
+                // Store user data in session storage
+                sessionStorage.setItem(
+                  "user-info",
+                  JSON.stringify({
+                    firstname: firstname,
+                    lastname: lastname,
+                    email: email,
+                  })
+                );
+                sessionStorage.setItem(
+                  "user-creds",
+                  JSON.stringify(userCredential.user)
+                );
+
+                // Redirect user to home.html
+                window.location.href = "home.html";
+              })
+              .catch((error) => {
+                // Error handling for database write
+                console.error("Error writing user data:", error);
+              });
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error("Signup error:", errorMessage);
+            // Handle errors, display error message to user, etc.
+          });
+      });
+
+      // Close toast
+      closeBtn.addEventListener("click", function () {
+        toast.classList.remove("active");
+      });
+    </script>
+  </body>
+</html>

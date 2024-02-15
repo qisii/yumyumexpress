@@ -1,0 +1,409 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+
+:root {
+  --light-grey: #f1f0f6;
+  --grey2: #8b8b8b;
+  --light-dark: #666;
+  --dark-grey: #4d4d4d;
+  --dark: #1f1f1f;
+  --light: #fff;
+  --grid: #f0f0f0;
+  --primary: #ffc40c;
+  --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+/* remove margin and padding so that the application
+can fill the whole screen */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.2s linear;
+}
+
+.btn,
+.btn1,
+.btn2 {
+  height: 2rem;
+  width: 100%;
+  font-weight: 400;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  display: inline-block;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn {
+  height: 100%;
+  width: 100%;
+  background: var(--primary);
+  color: var(--light);
+  border: 0.1rem solid var(--primary);
+}
+
+.btn1 {
+  height: 100%;
+  width: 100%;
+  background: var(--dark);
+  color: var(--light);
+  border: 0.1rem solid var(--dark);
+}
+
+.btn2 {
+  height: 100%;
+  width: 100%;
+  background: var(--light);
+  color: var(--dark);
+  border: 0.1rem solid var(--dark);
+}
+
+.btn:hover {
+  background: var(--light);
+  color: var(--primary);
+  border: 0.1rem solid var(--primary);
+}
+
+.btn1:hover {
+  background: var(--light);
+  color: var(--dark);
+  border: 0.1rem solid var(--dark);
+}
+
+.btn2:hover {
+  background: var(--dark);
+  color: var(--light);
+  border: 0.1rem solid var(--dark);
+}
+
+section {
+  padding: 3rem 1rem;
+}
+
+/* ============================================ intro */
+.intro {
+  padding: 0;
+}
+
+.intro .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.intro .container .content {
+  text-align: center;
+}
+
+.intro .container .content .image {
+  height: 100%;
+  width: 100%;
+}
+
+.intro .container .content .image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.intro .container .content p {
+  font-size: 0.8rem;
+  color: var(--light-dark);
+  margin: 2rem 0;
+}
+
+/* ============================================ login */
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  max-width: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+}
+
+header {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--dark-grey);
+  text-align: center;
+}
+
+form {
+  margin-top: 2rem;
+}
+
+form .field {
+  position: relative;
+  height: 2.1rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.field input,
+.field button {
+  height: 100%;
+  width: 100%;
+  font-weight: 400;
+  border: none;
+  border-radius: 0.4rem;
+}
+
+.field input {
+  outline: none;
+  font-size: 0.8rem;
+  padding: 1.1rem 0.7rem;
+  border: 0.1rem solid var(--grid);
+}
+
+.field input:focus {
+  border-bottom-width: 0.2rem;
+}
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-40%);
+  color: var(--grey2);
+  padding: 0.3rem;
+}
+
+.form-link {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.form-link span,
+.form-link a {
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: var(--light-dark);
+}
+
+.form a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.form a:hover {
+  text-decoration: underline;
+}
+
+.field .btn {
+  padding: 0;
+}
+
+/* .line {
+  position: relative;
+  height: 0.1rem;
+  width: 100%;
+  margin: 2rem 0;
+  background-color: var(--grid);
+} */
+
+/* ============================================ home */
+.home,
+.account,
+.order,
+.cart {
+  background-image: url("/images/bg-2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.home .header,
+.account .header,
+.order .header,
+.cart .header {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  left: 1;
+  right: 0;
+  z-index: 100;
+  padding: 1rem;
+}
+
+.header .navbar {
+  position: relative;
+}
+
+.header .navbar a,
+.account .header a,
+.order .header a,
+.cart .header a {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.55rem 0.1rem 0.55rem;
+  color: var(--dark);
+  position: relative;
+  background: var(--primary);
+  box-shadow: var(--box-shadow);
+  border-radius: 50%;
+  transition: 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.header .navbar a:hover {
+  background: var(--light);
+  color: var(--primary);
+}
+
+.dropdown {
+  display: none;
+}
+
+.dropdown.active {
+  display: contents;
+  transition: all 0.5s;
+}
+
+.dropdown .sub-menu {
+  margin-top: 1rem;
+  background: var(--light);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+}
+.sub-menu .drp-link {
+  display: flex;
+  text-decoration: none;
+  background: none !important;
+  box-shadow: none !important;
+  margin: 0.5rem 0 !important;
+  border: none;
+}
+
+.sub-menu .drp-link p {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.sub-menu .logout-btn p {
+  margin-left: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.sub-menu .drp-link p:hover {
+  color: var(--primary);
+}
+
+/* ============================================ account */
+.account .content .form {
+  box-shadow: none;
+  margin-top: 3rem;
+}
+
+.account .content form .field {
+  height: 3rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+}
+.account .content form .field input {
+  border: none;
+}
+
+.account .content form .field input:focus {
+  border: 0.1rem solid var(--primary);
+}
+
+.account .content form .reminder {
+  margin-top: 0.5rem;
+}
+
+.account .content form span {
+  font-size: 0.8rem;
+  color: var(--light-dark);
+}
+
+.account .content form .btn-field {
+  margin-top: 1.5rem;
+}
+
+.account .header,
+.order .header,
+.cart .header {
+  left: 0;
+}
+
+.account .header a,
+.order .header a,
+.cart .header a {
+  background: var(--light);
+  margin-left: 0;
+}
+
+.account .title {
+  margin-right: 5rem;
+}
+
+/* ============================================ order */
+.order .title {
+  margin-right: 7.5rem;
+}
+
+/* ============================================ cart */
+.cart .title {
+  margin-right: 9rem;
+}
+
+/* ============================================ toast */
+.toast {
+  background-color: red;
+  width: 350px;
+  min-height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+  position: absolute;
+  top: 75%;
+  left: -100%;
+  transition: all 0.5s;
+}
+
+.toast.active {
+  left: 5%;
+}
+
+.bx-check,
+.bx-x {
+  position: absolute;
+}
+
+.bx-x {
+  right: 10px;
+  top: 15px;
+}
+
+.toast .message {
+  color: var(--light);
+}
+
+/* ============================================  */
+
+/* ============================================ media queries */
+
+/* samsung galaxy s20 */
+@media (max-width: 360px) and (max-height: 800px) {
+}
+
+/* Motgo G4  */
+@media (max-width: 360px) and (max-height: 680px) {
+}

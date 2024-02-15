@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>yumyumexpress</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/logo2.png" />
+
+    <!-- custom css file -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- boxicons cdn -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- view -->
+    <meta name="view-transition" content="same-origin" />
+  </head>
+  <body>
+    <section class="account">
+      <div class="content">
+        <div class="header">
+          <a href="home.html"><i class="bx bx-left-arrow-alt"></i></a>
+          <h3 class="title">Account Details</h3>
+        </div>
+
+        <div class="form form-content">
+          <form action="" id="updateForm">
+            <div class="field input-field">
+              <input
+                type="text"
+                placeholder="Firstname"
+                id="firstname"
+                class="input"
+              />
+            </div>
+            <div class="field input-field">
+              <input
+                type="text"
+                placeholder="Lastname"
+                id="lastname"
+                class="input"
+              />
+            </div>
+            <div class="field input-field">
+              <input
+                type="email"
+                placeholder="Email"
+                id="email"
+                class="input"
+              />
+            </div>
+
+            <div class="field input-field">
+              <input
+                type="text"
+                placeholder="Phone Number"
+                id="phone"
+                class="input"
+              />
+            </div>
+
+            <div class="reminder">
+              <span id="phoneReminder">Please enter your phone number.</span>
+            </div>
+
+            <div class="field input-field btn-field">
+              <button class="btn" type="submit">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- custom js file -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
