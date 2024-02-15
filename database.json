@@ -1,0 +1,348 @@
+{
+  "Category": [
+    {
+      "Id": 0,
+      "ImagePath": "btn_1",
+      "Name": "Pizza"
+    },
+    {
+      "Id": 1,
+      "ImagePath": "btn_2",
+      "Name": "Burger"
+    },
+    {
+      "Id": 2,
+      "ImagePath": "btn_3",
+      "Name": "Chicken"
+    },
+
+    {
+      "Id": 3,
+      "ImagePath": "btn_7",
+      "Name": "Drink"
+    }
+  ],
+  "Foods": [
+    {
+      "BestFood": true,
+      "CategoryId": 0,
+      "Description": "A timeless classic, the Margherita pizza captures the essence of Italian simplicity. The thin, crispy crust is adorned with a luscious layer of fresh tomato sauce, delicate mozzarella cheese, and fragrant basil leaves. This pizza is a celebration of flavors in every bite, delivering a taste of Italy to your palate.",
+      "Id": 0,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/margherita.jpg?alt=media&token=b040969d-5810-446e-a3fa-bd61cc88f47a",
+      "LocationId": 1,
+      "Price": 240,
+      "PriceId": 1,
+      "Star": 4.5,
+      "TimeId": 1,
+      "TimeValue": 15,
+      "Title": "Margherita"
+    },
+    {
+      "BestFood": false,
+      "CategoryId": 0,
+      "Description": "Indulge in the Pepperoni Lovers pizza, a carnivore's dream come true. The crust is generously topped with zesty pepperoni slices, perfectly melding with the melted mozzarella and robust tomato sauce. Each mouthful is a symphony of savory and spicy notes, making it a go-to choice for those who savor the boldness of pepperoni.",
+      "Id": 1,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Pepperoni%20Lovers.jpg?alt=media&token=838fb042-38c9-4687-be25-86fbdbc14903",
+      "LocationId": 1,
+      "Price": 220,
+      "PriceId": 1,
+      "Star": 4.7,
+      "TimeId": 1,
+      "TimeValue": 18,
+      "Title": "Pepperoni Lovers"
+    },
+    {
+      "BestFood": false,
+      "CategoryId": 0,
+      "Description": "The Veggie Supreme pizza is a colorful masterpiece that caters to vegetarian cravings. Loaded with a medley of bell peppers, onions, olives, and mushrooms, this pizza offers a symphony of textures and tastes. The combination of fresh, vibrant vegetables atop a golden crust creates a delightful and satisfying experience.",
+      "Id": 2,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Veggie%20Supreme.jpg?alt=media&token=1d25768d-55f3-4e1b-8a3c-5b2269299e15",
+      "LocationId": 1,
+      "Price": 210,
+      "PriceId": 1,
+      "Star": 4.5,
+      "TimeId": 1,
+      "TimeValue": 20,
+      "Title": "Veggie Supreme"
+    },
+    {
+      "BestFood": false,
+      "CategoryId": 0,
+      "Description": "Experience the smoky allure of the BBQ Chicken Delight pizza. Succulent pieces of BBQ-infused chicken are paired with the sweetness of red onions and the crunch of bell peppers. All of this is embraced by a delectable blend of cheeses, making every slice a journey into the world of bold barbecue flavors.",
+      "Id": 3,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/BBQ%20Chicken%20Delight.jpg?alt=media&token=dec91941-e3c1-4b9b-9530-31f9b8282108",
+      "LocationId": 1,
+      "Price": 250,
+      "PriceId": 1,
+      "Star": 4.6,
+      "TimeId": 1,
+      "TimeValue": 22,
+      "Title": "BBQ Chicken Delight"
+    },
+    {
+      "BestFood": true,
+      "CategoryId": 0,
+      "Description": "Transport your taste buds to a tropical paradise with the Hawaiian pizza. This delightful creation features a harmonious blend of savory ham, juicy pineapple chunks, and a tantalizing drizzle of BBQ sauce. Each bite is a blissful combination of sweet and savory, capturing the essence of a Hawaiian escape.",
+      "Id": 4,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Hawaiian%20Paradise.jpg?alt=media&token=92a4775b-3ebc-4c09-af8d-6fdfc9a66a6f",
+      "LocationId": 0,
+      "Price": 230,
+      "PriceId": 1,
+      "Star": 4.3,
+      "TimeId": 1,
+      "TimeValue": 17,
+      "Title": "Hawaiian Paradise"
+    },
+
+    {
+      "BestFood": false,
+      "CategoryId": 1,
+      "Description": "Embrace the simplicity of the Classic Beef Burger, featuring a juicy beef patty nestled between a toasted sesame seed bun. Topped with crisp lettuce, ripe tomato, and a special sauce, it's a timeless rendition of the all-American burger.",
+      "Id": 5,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Classic%20Beef%20Burger.jpg?alt=media&token=9c7bca6d-c1e6-4e54-b1c5-04eafd755a24",
+      "LocationId": 1,
+      "Price": 130,
+      "PriceId": 0,
+      "Star": 4.5,
+      "TimeId": 1,
+      "TimeValue": 15,
+      "Title": "Classic Beef Burger"
+    },
+    {
+      "BestFood": true,
+      "CategoryId": 1,
+      "Description": "Heat things up with the Spicy Jalapeño Burger. A flame-kissed patty infused with jalapeños is crowned with pepper jack cheese and a zesty chipotle mayo, offering a tantalizing kick for those who crave a spicy burger adventure.",
+      "Id": 6,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Spicy%20Jalape%C3%B1o%20Burger.jpg?alt=media&token=2d7b4896-2556-4993-908b-023bd424b00d",
+      "LocationId": 1,
+      "Price": 180,
+      "PriceId": 0,
+      "Star": 4.7,
+      "TimeId": 1,
+      "TimeValue": 18,
+      "Title": "Spicy Jalapeño Burger"
+    },
+    {
+      "BestFood": false,
+      "CategoryId": 1,
+      "Description": "Indulge in the earthy flavors of the Mushroom Swiss Delight Burger. A succulent patty is topped with sautéed mushrooms and a drizzle of truffle aioli, creating a burger that caters to the discerning palate.",
+      "Id": 7,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Mushroom%20Swiss%20Delight.jpg?alt=media&token=38bb4849-836d-47a1-86dc-8ad01987ce27",
+      "LocationId": 0,
+      "Price": 160,
+      "PriceId": 1,
+      "Star": 4.7,
+      "TimeId": 1,
+      "TimeValue": 18,
+      "Title": "Mushroom Swiss Delight"
+    },
+    {
+      "BestFood": false,
+      "CategoryId": 1,
+      "Description": "Opt for a healthier option with the Chicken Avocado Bliss Burger. A grilled chicken breast takes center stage, adorned with fresh avocado, crisp lettuce, and creamy ranch dressing on a wholesome whole wheat bun.",
+      "Id": 8,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Chicken%20Avocado%20Bliss.jpg?alt=media&token=6c9ab430-a857-458e-8717-1d5c352d680f",
+      "LocationId": 1,
+      "Price": 150,
+      "PriceId": 1,
+      "Star": 4.4,
+      "TimeId": 1,
+      "TimeValue": 20,
+      "Title": "Chicken Avocado Bliss"
+    },
+    {
+      "BestFood": false,
+      "CategoryId": 1,
+      "Description": "For bacon aficionados, the Bacon and Cheese Heaven Burger is a must-try. A beef patty is adorned with crispy bacon, cheddar cheese, and a tangy BBQ sauce, creating a heavenly combination of smoky and savory flavors.",
+      "Id": 9,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Bacon%20and%20Cheese%20Heaven.jpg?alt=media&token=85735e19-dca0-4277-8dde-1d1da7626cc4",
+      "LocationId": 1,
+      "Price": 180,
+      "PriceId": 1,
+      "Star": 4.3,
+      "TimeId": 1,
+      "TimeValue": 17,
+      "Title": "Bacon and Cheese Heaven"
+    },
+
+    {
+      "BestFood": false,
+      "CategoryId": 2,
+      "Description": "Delight in the crispy perfection of our Original Crispy Chicken, seasoned to golden-brown perfection for a satisfying crunch in every bite.",
+      "Id": 10,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Original%20Crispy%20Chicken.jpg?alt=media&token=06f54023-f5fe-42e2-8de4-74288738dbe0",
+      "LocationId": 0,
+      "Price": 130,
+      "PriceId": 0,
+      "Star": 4.7,
+      "TimeId": 1,
+      "TimeValue": 18,
+      "Title": "Original Crispy Chicken"
+    },
+    {
+      "BestFood": false,
+      "CategoryId": 2,
+      "Description": "Experience a burst of heat with our Spicy Buffalo Wings, tender chicken wings coated in a zesty buffalo sauce for a fiery kick.",
+      "Id": 11,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Spicy%20Buffalo%20Wings.jpg?alt=media&token=21e49d67-d660-4a3c-b910-0dec60550150",
+      "LocationId": 0,
+      "Price": 180,
+      "PriceId": 0,
+      "Star": 4.6,
+      "TimeId": 1,
+      "TimeValue": 18,
+      "Title": "Spicy Buffalo Wings"
+    },
+    {
+      "BestFood": false,
+      "CategoryId": 2,
+      "Description": "Indulge in the sweet and savory goodness of our Honey Mustard Glazed Tenders, featuring succulent chicken tenders coated in a luscious honey mustard glaze.",
+      "Id": 12,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Honey%20Mustard%20Glazed%20Tenders.jpg?alt=media&token=fecbd1bd-7d23-455e-b154-7af71273d60a",
+      "LocationId": 1,
+      "Price": 180,
+      "PriceId": 1,
+      "Star": 4.5,
+      "TimeId": 0,
+      "TimeValue": 9,
+      "Title": "Honey Mustard Glazed Tenders"
+    },
+    {
+      "BestFood": false,
+      "CategoryId": 2,
+      "Description": "Elevate your taste buds with our Lemon Pepper Chicken, crispy tenders seasoned with zesty lemon and aromatic black pepper for a refreshing flavor.",
+      "Id": 13,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Lemon%20Pepper%20Chicken.jpg?alt=media&token=473ead4b-fb1a-48e6-a3e2-cceeecfb01bf",
+      "LocationId": 0,
+      "Price": 190,
+      "PriceId": 0,
+      "Star": 4.4,
+      "TimeId": 1,
+      "TimeValue": 16,
+      "Title": "Lemon Pepper Chicken"
+    },
+    {
+      "BestFood": false,
+      "CategoryId": 2,
+      "Description": "Embark on a flavorful journey with our Korean Fried Chicken, featuring a crispy exterior and a tantalizing sweet and spicy glaze.",
+      "Id": 14,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Korean%20Fried%20Chicken.jpg?alt=media&token=0476b756-df2a-4b11-946e-ca40e0406eb2",
+      "LocationId": 1,
+      "Price": 200,
+      "PriceId": 1,
+      "Star": 4.8,
+      "TimeId": 1,
+      "TimeValue": 22,
+      "Title": "Korean Fried Chicken"
+    },
+
+    {
+      "BestFood": false,
+      "CategoryId": 3,
+      "Description": "Refresh with our Fresh Orange Juice, a zesty and invigorating drink squeezed from the finest oranges.",
+      "Id": 20,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Fresh%20Orange%20Juice.jpg?alt=media&token=4536773a-a845-4b5b-9f6b-79ebf26a5bd0",
+      "LocationId": 0,
+      "Price": 50,
+      "PriceId": 0,
+      "Star": 4.6,
+      "TimeId": 0,
+      "TimeValue": 5,
+      "Title": "Fresh Orange Juice"
+    },
+    {
+      "BestFood": false,
+      "CategoryId": 3,
+      "Description": "Indulge in the Berry Blast Smoothie, a refreshing blend of mixed berries and yogurt for a fruity and nutritious treat.",
+      "Id": 21,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Berry%20Blast%20Smoothie.jpg?alt=media&token=f476daf9-2584-436b-8b58-9e61200d45f2",
+      "LocationId": 0,
+      "Price": 110,
+      "PriceId": 0,
+      "Star": 4.8,
+      "TimeId": 0,
+      "TimeValue": 7,
+      "Title": "Berry Blast Smoothie"
+    },
+    {
+      "BestFood": false,
+      "CategoryId": 3,
+      "Description": "Savor the Iced Caramel Macchiato, a sweet and energizing coffee delight made with espresso, caramel syrup, milk, and ice.",
+      "Id": 22,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Iced%20Caramel%20Macchiato.jpg?alt=media&token=21dce5e9-78b7-4354-a114-f7441db3524f",
+      "LocationId": 0,
+      "Price": 70,
+      "PriceId": 0,
+      "Star": 4.5,
+      "TimeId": 0,
+      "TimeValue": 3,
+      "Title": "Iced Caramel Macchiato"
+    },
+    {
+      "BestFood": false,
+      "CategoryId": 3,
+      "Description": "Quench your thirst with the Mint Lemonade, a cool and tangy beverage perfect for a hot day.",
+      "Id": 23,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Mint%20Lemonade.jpg?alt=media&token=d437104e-7ea3-473a-b126-d21e4feb0cc8",
+      "LocationId": 0,
+      "Price": 90,
+      "PriceId": 0,
+      "Star": 4.4,
+      "TimeId": 0,
+      "TimeValue": 4,
+      "Title": "Mint Lemonade"
+    },
+    {
+      "BestFood": false,
+      "CategoryId": 3,
+      "Description": "Beat the heat with the Mango Tango Slush, a tropical delight offering a slushy blend of mango goodness.",
+      "Id": 24,
+      "ImagePath": "https://firebasestorage.googleapis.com/v0/b/fir-test-aa9c8.appspot.com/o/Mango%20Tango%20Slush.jpg?alt=media&token=55398dbc-649a-4fbd-b6d2-10e3e2a73a8f",
+      "LocationId": 0,
+      "Price": 100,
+      "PriceId": 0,
+      "Star": 4.7,
+      "TimeId": 0,
+      "TimeValue": 6,
+      "Title": "Mango Tango Slush"
+    }
+  ],
+  "Location": [
+    {
+      "Id": 0,
+      "loc": "Tibanga"
+    },
+    {
+      "Id": 1,
+      "loc": "Palao"
+    }
+  ],
+  "Price": [
+    {
+      "Id": 0,
+      "Value": "₱50 - ₱100"
+    },
+    {
+      "Id": 1,
+      "Value": "₱100 - ₱200"
+    },
+    {
+      "Id": 2,
+      "Value": "more than ₱200"
+    }
+  ],
+  "Time": [
+    {
+      "Id": 0,
+      "Value": "0 - 10 min"
+    },
+    {
+      "Id": 1,
+      "Value": "10 - 30 min"
+    },
+    {
+      "Id": 2,
+      "Value": "more than 30 min"
+    }
+  ]
+}
