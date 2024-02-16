@@ -100,6 +100,7 @@
         child,
         update,
         remove,
+        get,
       } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
       // Your web app's Firebase configuration
@@ -187,18 +188,44 @@
           });
       });
 
-      // Display user data from session storage and update reminder
-      const userInfo = JSON.parse(sessionStorage.getItem("user-info"));
+      // Fetch user data from Firebase Realtime Database and display in input fields
+      const userCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+      const userId = userCreds.uid;
+      console.log("User ID:", userCreds);
 
-      if (userInfo) {
-        document.getElementById("firstname").value = userInfo.firstname;
-        document.getElementById("lastname").value = userInfo.lastname;
-        document.getElementById("email").value = userInfo.email;
-        document.getElementById("phone").value = userInfo.phone;
+      const userRef = ref(db, "users/" + userId);
+      get(userRef)
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.val();
+            document.getElementById("firstname").value = userData.firstname;
+            document.getElementById("lastname").value = userData.lastname;
+            document.getElementById("email").value = userData.email;
+            document.getElementById("phone").value = userData.phone;
 
-        // Update reminder message based on phone number
-        updateReminder();
-      }
+            // Update reminder message based on phone number
+            updateReminder();
+          } else {
+            console.log("User not found");
+          }
+        })
+        .catch((error) => {
+          console.error("Error getting user data:", error);
+        });
+
+      // // Display user data from session storage and update reminder
+      // const userInfo = JSON.parse(sessionStorage.getItem("user-creds"));
+      // console.log("User ID:", userInfo);
+
+      // if (userInfo) {
+      //   document.getElementById("firstname").value = userInfo.firstname;
+      //   document.getElementById("lastname").value = userInfo.lastname;
+      //   document.getElementById("email").value = userInfo.email;
+      //   document.getElementById("phone").value = userInfo.phone;
+
+      //   // Update reminder message based on phone number
+      //   updateReminder();
+      // }
     </script>
     <!-- custom js file -->
     <script src="js/script.js"></script>

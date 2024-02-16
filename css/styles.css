@@ -36,7 +36,8 @@ section {
 
 section.categories,
 section.account,
-section.cart {
+section.cart,
+section.order {
   background-image: url("/images/bg-2.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -128,7 +129,8 @@ section.cart {
 
 header.home,
 header.account,
-header.cart {
+header.cart,
+header.order {
   position: absolute;
   top: 0;
   left: 1;
@@ -201,7 +203,14 @@ header.account {
   padding: 1rem 5%;
 }
 
+/* cart */
 header.cart {
+  left: 0;
+  padding: 1rem 5%;
+}
+
+/* order */
+header.order {
   left: 0;
   padding: 1rem 5%;
 }
@@ -236,7 +245,7 @@ header.cart {
 .sub-menu .drp-link p {
   width: 100%;
   padding: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .sub-menu .logout-btn p {
@@ -330,6 +339,16 @@ header.cart {
   font-weight: bolder;
   margin-right: 1rem;
   font-size: 2.5rem;
+}
+
+/* ============================================ cart */
+.cart .box-container {
+  padding: 0 1rem;
+}
+
+/* ============================================ order */
+.order .box-container {
+  padding: 0 1rem;
 }
 
 /* ============================================ intro */
@@ -474,11 +493,12 @@ form .field {
 }
 
 .account .content form .field {
-  height: 5rem;
+  height: 6rem;
   border-radius: 0.5rem;
   box-shadow: var(--box-shadow);
 }
 .account .content form .field input {
+  font-size: 1.5rem;
   border: none;
 }
 
@@ -497,6 +517,10 @@ form .field {
 
 .account .content form .btn-field {
   margin-top: 1.5rem;
+}
+
+.account .content form .btn-field .btn {
+  padding: 1.5rem 0;
 }
 
 /* .account header,
