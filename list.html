@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>yumyumexpress</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/logo2.png" />
+
+    <!-- custom css file -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- boxicons cdn -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- view -->
+    <meta name="view-transition" content="same-origin" />
+  </head>
+  <body>
+    <!-- header section start -->
+    <header class="list">
+      <div class="icons">
+        <a href="home.html"><i class="bx bx-left-arrow-alt"></i></a>
+      </div>
+    </header>
+    <!-- header section end -->
+
+    <!-- list section start -->
+    <section class="list" id="list">
+      <h3 class="heading" id="category-name">Category</h3>
+
+      <div class="box-container">
+        <div class="box">
+          <img src="" alt="" id="img" />
+          <h3 id="itemName">Tasty Food</h3>
+          <p>Price <span id="itemPrice">$15.99</span></p>
+          <a href="#" class="btn">Add to cart</a>
+        </div>
+      </div>
+    </section>
+    <!-- cart section end -->
+
+    <!-- custom js file -->
+    <script src="js/script.js"></script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        child,
+        update,
+        remove,
+        get,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyACybXWMQQyN1QFhEbiLTfZ0n-bAVHQqII",
+        authDomain: "yumyum-781e7.firebaseapp.com",
+        projectId: "yumyum-781e7",
+        storageBucket: "yumyum-781e7.appspot.com",
+        messagingSenderId: "722586076935",
+        appId: "1:722586076935:web:12f241bde223a2eb5f27a2",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      const db = getDatabase(app);
+    </script>
+  </body>
+</html>

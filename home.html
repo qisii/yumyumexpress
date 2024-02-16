@@ -49,103 +49,7 @@
     <section class="categories" id="categories">
       <h3 class="heading">Categories</h3>
 
-      <div class="box-container">
-        <div class="box">
-          <a href="#" class="fas fa-heart"></a>
-          <a href="#" class="fas fa-eye"></a>
-          <img src="images/food-1.png" alt="" />
-          <h3>Tasty Food</h3>
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <!-- <span>$15.99</span> -->
-          <a href="#" class="btn">Add to cart</a>
-        </div>
-
-        <div class="box">
-          <a href="#" class="fas fa-heart"></a>
-          <a href="#" class="fas fa-eye"></a>
-          <img src="images/food-1.png" alt="" />
-          <h3>Tasty Food</h3>
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <span>$15.99</span>
-          <a href="#" class="btn">Add to cart</a>
-        </div>
-
-        <div class="box">
-          <a href="#" class="fas fa-heart"></a>
-          <a href="#" class="fas fa-eye"></a>
-          <img src="images/food-1.png" alt="" />
-          <h3>Tasty Food</h3>
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <span>$15.99</span>
-          <a href="#" class="btn">Add to cart</a>
-        </div>
-
-        <div class="box">
-          <a href="#" class="fas fa-heart"></a>
-          <a href="#" class="fas fa-eye"></a>
-          <img src="images/food-1.png" alt="" />
-          <h3>Tasty Food</h3>
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <span>$15.99</span>
-          <a href="#" class="btn">Add to cart</a>
-        </div>
-
-        <div class="box">
-          <a href="#" class="fas fa-heart"></a>
-          <a href="#" class="fas fa-eye"></a>
-          <img src="images/food-1.png" alt="" />
-          <h3>Tasty Food</h3>
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <span>$15.99</span>
-          <a href="#" class="btn">Add to cart</a>
-        </div>
-
-        <div class="box">
-          <a href="#" class="fas fa-heart"></a>
-          <a href="#" class="fas fa-eye"></a>
-          <img src="images/food-1.png" alt="" />
-          <h3>Tasty Food</h3>
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <span>$15.99</span>
-          <a href="#" class="btn">Add to cart</a>
-        </div>
-      </div>
+      <div class="box-container" id="box-container"></div>
     </section>
     <!-- categories section end -->
 
@@ -153,6 +57,32 @@
     <script src="js/script.js"></script>
     <!-- js scripts -->
     <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        child,
+        update,
+        remove,
+        get,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyACybXWMQQyN1QFhEbiLTfZ0n-bAVHQqII",
+        authDomain: "yumyum-781e7.firebaseapp.com",
+        projectId: "yumyum-781e7",
+        storageBucket: "yumyum-781e7.appspot.com",
+        messagingSenderId: "722586076935",
+        appId: "1:722586076935:web:12f241bde223a2eb5f27a2",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      const db = getDatabase(app);
+
       let dropdown = document.getElementById("#dropdown");
 
       function openMenu() {
@@ -183,6 +113,50 @@
 
       window.addEventListener("load", CheckCred);
       logoutBtn.addEventListener("click", Signout);
+
+      let boxContainer = document.getElementById("box-container");
+
+      // Fetch category data from Firebase
+      get(child(ref(db), "Category"))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            snapshot.forEach((categorySnapshot) => {
+              const category = categorySnapshot.val();
+              const box = createBox(category);
+              boxContainer.appendChild(box);
+            });
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+      // Function to create a new .box element
+      function createBox(category) {
+        const box = document.createElement("div");
+        box.classList.add("box");
+
+        const image = document.createElement("img");
+        image.src = "images/" + category.ImagePath + ".png"; // Assuming images are in JPG format
+        image.alt = category.Name;
+
+        const name = document.createElement("h3");
+        name.innerText = category.Name;
+
+        const checkMoreLink = document.createElement("a");
+        checkMoreLink.href = "list.html";
+        checkMoreLink.classList.add("btn1");
+        checkMoreLink.innerText = "Check More";
+
+        // Append elements to the box
+        box.appendChild(image);
+        box.appendChild(name);
+        box.appendChild(checkMoreLink);
+
+        return box;
+      }
     </script>
   </body>
 </html>
