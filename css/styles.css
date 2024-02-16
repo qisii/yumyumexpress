@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
-
 :root {
   --light-grey: #f1f0f6;
   --grey2: #8b8b8b;
@@ -12,32 +11,79 @@
   --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
-/* remove margin and padding so that the application
-can fill the whole screen */
 * {
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  outline: none;
+  border: none;
+
   transition: all 0.2s linear;
+}
+
+html {
+  /* font-size: 62.5%; */
+  overflow-x: hidden;
+  scroll-padding-top: 5.5rem;
+  scroll-behavior: smooth;
+}
+
+section {
+  padding: 2rem 9%;
+}
+
+section.categories,
+section.account,
+section.cart {
+  background-image: url("/images/bg-2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.sub-heading {
+  text-align: center;
+  color: var(--green);
+  font-size: 2rem;
+  margin-top: 15%;
+}
+
+.heading {
+  text-align: start;
+  color: var(--black);
+  font-size: 4rem;
+  padding: 0 1rem 2rem 1rem;
+  margin-top: 15%;
+  /* text-transform: uppercase; */
+}
+
+.title {
+  text-align: start;
+  color: var(--black);
+  font-size: 4rem;
+  padding-bottom: 1rem;
+  margin-top: 10%;
+  /* text-transform: uppercase; */
 }
 
 .btn,
 .btn1,
 .btn2 {
-  height: 2rem;
-  width: 100%;
-  font-weight: 400;
-  text-decoration: none;
-  border-radius: 0.5rem;
+  /* height: 2rem; */
+  /* width: 100%; */
+  margin-top: 1rem;
   display: inline-block;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  transition: all 0.3s ease;
+  font-size: 1.7rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  padding: 0.8rem 3rem;
 }
 
 .btn {
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
   background: var(--primary);
   color: var(--light);
@@ -78,20 +124,224 @@ can fill the whole screen */
   border: 0.1rem solid var(--dark);
 }
 
-section {
-  padding: 3rem 1rem;
+/* ===========================================navigation bar */
+
+header.home,
+header.account,
+header.cart {
+  position: absolute;
+  top: 0;
+  left: 1;
+  right: 0;
+  /* background: var(--light); */
+  padding: 1rem 7%;
+  display: flex;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  /* box-shadow: var(--box-shadow); */
+}
+
+header .logo {
+  color: var(--black);
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+header .logo i {
+  color: var(--green);
+}
+
+header a {
+  font-size: 1.7rem;
+  border-radius: 0.5rem;
+  color: var(--black);
+  margin-left: 1rem;
+}
+
+header a.active,
+header a:hover {
+  color: var(--primary);
+  background: var(--light);
+}
+
+header .icons i,
+header .icons a {
+  cursor: pointer;
+  height: 5rem;
+  line-height: 4.5rem;
+  width: 5rem;
+  text-align: center;
+  font-size: 2.5rem;
+  padding-top: 0.3rem;
+  color: var(--black);
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+header .icons i:hover {
+  color: var(--primary);
+  background: var(--light);
+  transform: rotate(360deg);
+}
+
+header .icons .bxs-user {
+  margin-left: 0 !important;
+}
+
+header .icons #menu-bars {
+  display: none;
+}
+
+/* account */
+
+header.account {
+  left: 0;
+  padding: 1rem 5%;
+}
+
+header.cart {
+  left: 0;
+  padding: 1rem 5%;
+}
+
+/* dropdown */
+
+.dropdown {
+  display: none;
+}
+
+.dropdown.active {
+  display: contents;
+  transition: all 0.5s;
+}
+
+.dropdown .sub-menu {
+  /* margin-top: 1rem; */
+  background: var(--light);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+}
+.sub-menu .drp-link {
+  padding: 0 0.55rem 0.2rem 0.55rem;
+  display: flex;
+  text-decoration: none;
+  background: none !important;
+  box-shadow: none !important;
+  margin: 0.5rem 0 !important;
+  border: none;
+}
+
+.sub-menu .drp-link p {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.sub-menu .logout-btn p {
+  /* margin-left: 0.5rem; */
+  margin-bottom: 0.5rem;
+}
+
+.sub-menu .drp-link p:hover {
+  color: var(--primary);
+}
+
+/* ===========================================categories */
+
+.categories .box-container {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+  gap: 1.5rem;
+}
+
+.categories .box-container .box {
+  padding: 2.5rem;
+  background: var(--light);
+  border-radius: 0.5rem;
+  /* border: 0.1rem solid rgba(0, 0, 0, 0.2); */
+  box-shadow: var(--box-shadow);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.categories .box-container .box .fa-heart,
+.categories .box-container .box .fa-eye {
+  position: absolute;
+  top: 1.5rem;
+  background: var(--grey);
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+  line-height: 5rem;
+  font-size: 2rem;
+  color: var(--black);
+}
+
+.categories .box-container .box .fa-heart:hover,
+.categories .box-container .box .fa-eye:hover {
+  background: var(--green);
+  color: var(--light);
+}
+
+.categories .box-container .box .fa-heart {
+  /* right: 1.5rem; */
+  right: -15rem;
+}
+
+.categories .box-container .box .fa-eye {
+  /* left: 1.5rem; */
+  left: -15rem;
+}
+
+.categories .box-container .box:hover .fa-heart {
+  right: 1.5rem;
+}
+
+.categories .box-container .box:hover .fa-eye {
+  left: 1.5rem;
+}
+
+.categories .box-container .box img {
+  width: 100%;
+  height: 17rem;
+  margin: 1rem 0;
+}
+
+.categories .box-container .box h3 {
+  color: var(--black);
+  font-size: 2.5rem;
+}
+
+.categories .box-container .box .stars {
+  padding: 1rem 0;
+}
+
+.categories .box-container .box .stars i {
+  font-size: 1.7rem;
+  color: var(--green);
+}
+
+.categories .box-container .box span {
+  color: var(--green);
+  font-weight: bolder;
+  margin-right: 1rem;
+  font-size: 2.5rem;
 }
 
 /* ============================================ intro */
 .intro {
-  padding: 0;
+  padding: 0 9%;
 }
 
 .intro .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem 1rem;
+  /* padding: 3rem 1rem; */
 }
 
 .intro .container .content {
@@ -109,8 +359,12 @@ section {
   object-fit: cover;
 }
 
+.intro .container .content h3 {
+  font-size: 3rem;
+}
+
 .intro .container .content p {
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   color: var(--light-dark);
   margin: 2rem 0;
 }
@@ -127,16 +381,18 @@ section {
 .form {
   max-width: 100%;
   width: 100%;
-  padding: 1.5rem;
+  padding: 2rem;
   box-shadow: var(--box-shadow);
   border-radius: 0.5rem;
 }
 
-header {
-  font-size: 1.3rem;
+.form header {
+  display: flex;
+  font-size: 2.5rem;
   font-weight: 500;
   color: var(--dark-grey);
-  text-align: center;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 form {
@@ -145,7 +401,7 @@ form {
 
 form .field {
   position: relative;
-  height: 2.1rem;
+  height: 5rem;
   width: 100%;
   margin-top: 1rem;
 }
@@ -161,13 +417,13 @@ form .field {
 
 .field input {
   outline: none;
-  font-size: 0.8rem;
-  padding: 1.1rem 0.7rem;
+  font-size: 1.3rem;
+  padding: 1.1rem 1rem;
   border: 0.1rem solid var(--grid);
 }
 
 .field input:focus {
-  border-bottom-width: 0.2rem;
+  border-bottom-width: 0.3rem;
 }
 .eye-icon {
   position: absolute;
@@ -180,12 +436,12 @@ form .field {
 
 .form-link {
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: 2rem;
 }
 
 .form-link span,
 .form-link a {
-  font-size: 0.6rem;
+  font-size: 1.5rem;
   font-weight: 400;
   color: var(--light-dark);
 }
@@ -211,106 +467,14 @@ form .field {
   background-color: var(--grid);
 } */
 
-/* ============================================ home */
-.home,
-.account,
-.order,
-.cart {
-  background-image: url("/images/bg-2.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-.home .header,
-.account .header,
-.order .header,
-.cart .header {
-  display: flex;
-  position: absolute;
-  align-items: center;
-  justify-content: space-between;
-  top: 0;
-  left: 1;
-  right: 0;
-  z-index: 100;
-  padding: 1rem;
-}
-
-.header .navbar {
-  position: relative;
-}
-
-.header .navbar a,
-.account .header a,
-.order .header a,
-.cart .header a {
-  font-size: 1.5rem;
-  margin-left: 0.5rem;
-  padding: 0.25rem 0.55rem 0.1rem 0.55rem;
-  color: var(--dark);
-  position: relative;
-  background: var(--primary);
-  box-shadow: var(--box-shadow);
-  border-radius: 50%;
-  transition: 0.3s ease;
-  border: none;
-  cursor: pointer;
-}
-
-.header .navbar a:hover {
-  background: var(--light);
-  color: var(--primary);
-}
-
-.dropdown {
-  display: none;
-}
-
-.dropdown.active {
-  display: contents;
-  transition: all 0.5s;
-}
-
-.dropdown .sub-menu {
-  margin-top: 1rem;
-  background: var(--light);
-  box-shadow: var(--box-shadow);
-  border-radius: 0.5rem;
-}
-.sub-menu .drp-link {
-  display: flex;
-  text-decoration: none;
-  background: none !important;
-  box-shadow: none !important;
-  margin: 0.5rem 0 !important;
-  border: none;
-}
-
-.sub-menu .drp-link p {
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-
-.sub-menu .logout-btn p {
-  margin-left: 0.5rem;
-  margin-bottom: 0.2rem;
-}
-
-.sub-menu .drp-link p:hover {
-  color: var(--primary);
-}
-
 /* ============================================ account */
 .account .content .form {
   box-shadow: none;
-  margin-top: 3rem;
+  margin-top: 20%;
 }
 
 .account .content form .field {
-  height: 3rem;
+  height: 5rem;
   border-radius: 0.5rem;
   box-shadow: var(--box-shadow);
 }
@@ -323,11 +487,11 @@ form .field {
 }
 
 .account .content form .reminder {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 .account .content form span {
-  font-size: 0.8rem;
+  font-size: 1.3rem;
   color: var(--light-dark);
 }
 
@@ -335,7 +499,7 @@ form .field {
   margin-top: 1.5rem;
 }
 
-.account .header,
+/* .account header,
 .order .header,
 .cart .header {
   left: 0;
@@ -350,7 +514,7 @@ form .field {
 
 .account .title {
   margin-right: 25%;
-}
+} */
 
 /* ============================================ order */
 .order .title {
@@ -372,10 +536,11 @@ form .field {
 }
 .toast {
   background-color: red;
-  /* width: 350px; */
+  min-width: 300px;
   /* min-height: 70px; */
-  padding: 0.5rem;
+  padding: 1rem;
   margin: 0.5rem;
+  font-size: 2rem;
   /* display: flex; */
   /* justify-content: center;
   align-items: center; */
@@ -383,12 +548,12 @@ form .field {
   box-shadow: var(--box-shadow);
   position: absolute;
   top: 80%;
-  /* left: -100%; */
+  left: -100%;
   transition: all 0.5s;
 }
 
 .toast.account {
-  width: 80%;
+  min-width: 300px;
   position: absolute;
   padding: 0.5rem 1rem;
   margin: 10%;
@@ -424,12 +589,61 @@ form .field {
 
 /* ============================================  */
 
-/* ============================================ media queries */
+/* ===========================================media queries */
 
-/* samsung galaxy s20 */
-@media (max-width: 360px) and (max-height: 800px) {
+/* tablet */
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+
+  header {
+    padding: 1rem 2rem;
+  }
+
+  section {
+    padding: 2rem;
+  }
 }
 
-/* Motgo G4  */
-@media (max-width: 360px) and (max-height: 680px) {
+/* smartphone */
+@media (max-width: 768px) {
+  header .icons #menu-bars {
+    display: inline-block;
+  }
+
+  header .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--light);
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+
+  header .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  header .navbar a {
+    display: block;
+    padding: 1.5rem;
+    margin: 1rem;
+    font-size: 2rem;
+    background: var(--grey);
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+
+  .categories .box-container .box img {
+    width: 100%;
+    height: auto;
+  }
 }

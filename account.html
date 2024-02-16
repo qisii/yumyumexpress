@@ -27,14 +27,16 @@
     <meta name="view-transition" content="same-origin" />
   </head>
   <body>
+    <header class="account">
+      <div class="icons">
+        <a href="home.html"><i class="bx bx-left-arrow-alt"></i></a>
+      </div>
+    </header>
+
     <section class="account">
       <div class="content">
-        <div class="header">
-          <a href="home.html"><i class="bx bx-left-arrow-alt"></i></a>
-          <h3 class="title">Account Details</h3>
-        </div>
-
         <div class="form form-content">
+          <h3 class="title">Account Details</h3>
           <form action="" id="updateForm">
             <div class="field input-field">
               <input
@@ -74,7 +76,7 @@
               <span id="phoneReminder"></span>
             </div>
 
-            <div class="field input-field btn-field">
+            <div class="btn-field">
               <button class="btn" type="submit">Update</button>
             </div>
           </form>
