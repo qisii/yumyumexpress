@@ -39,8 +39,7 @@
     <section class="list" id="list">
       <h3 class="heading" id="category-name">Category</h3>
 
-      <div class="box-container" id="box-container">
-        
+      <div class="box-container" id="box-container"></div>
     </section>
     <!-- cart section end -->
 
@@ -58,7 +57,6 @@
         get,
       } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-      // Your web app's Firebase configuration
       const firebaseConfig = {
         apiKey: "AIzaSyACybXWMQQyN1QFhEbiLTfZ0n-bAVHQqII",
         authDomain: "yumyum-781e7.firebaseapp.com",
@@ -68,7 +66,6 @@
         appId: "1:722586076935:web:12f241bde223a2eb5f27a2",
       };
 
-      // Initialize Firebase
       const app = initializeApp(firebaseConfig);
 
       const db = getDatabase(app);
@@ -110,14 +107,14 @@
         name.innerText = food.Title;
 
         const itemPrice = document.createElement("span"); // Change to span element
-        itemPrice.innerText = "₱ " + food.Price; // Price inside span element
+        itemPrice.innerText = "₱ " + food.Price + ".00"; // Price inside span element
 
         const priceParagraph = document.createElement("p");
         priceParagraph.innerHTML = "Price ";
         priceParagraph.appendChild(itemPrice);
 
         const addToCartLink = document.createElement("a");
-        addToCartLink.href = "#"; 
+        addToCartLink.href = "food-detail.html";
         addToCartLink.classList.add("btn");
         addToCartLink.innerText = "Add to cart";
 
@@ -130,8 +127,8 @@
         return box;
       }
 
-      // Add event listener to anchor tag in header icons
-      document.querySelector(".icons a").addEventListener("click", function() {
+      // remove category id
+      document.querySelector(".icons a").addEventListener("click", function () {
         sessionStorage.removeItem("selectedCategoryId"); // Remove selectedCategoryId from session storage
       });
     </script>

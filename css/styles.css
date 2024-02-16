@@ -9,6 +9,7 @@
   --grid: #f0f0f0;
   --primary: #ffc40c;
   --primary-fade: #ffc40c;
+  --primary-fade2: #ffc20c11;
   --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
@@ -133,7 +134,8 @@ header.home,
 header.account,
 header.cart,
 header.order,
-header.list {
+header.list,
+header.food-detail {
   position: absolute;
   top: 0;
   left: 1;
@@ -220,6 +222,12 @@ header.order {
 
 /* list */
 header.list {
+  left: 0;
+  padding: 1rem 5%;
+}
+
+/* food-detail */
+header.food-detail {
   left: 0;
   padding: 1rem 5%;
 }
@@ -394,6 +402,99 @@ header.list {
   color: var(--dark);
   font-size: 2.7rem;
   text-align: start;
+}
+
+/* ============================================ food-detail */
+
+section.food-detail {
+  padding: 0;
+}
+
+.food-detail .image img {
+  width: 100%;
+  height: 35rem;
+  object-fit: cover;
+}
+
+.food-detail .item-info {
+  padding: 2.5rem;
+}
+
+.food-detail .item-info .heading {
+  padding: 0;
+  margin-top: 2rem;
+  color: var(--dark);
+  font-size: 2.9rem;
+  display: flex;
+}
+
+.food-detail .item-info h6 {
+  display: flex;
+  font-weight: 500;
+  font-size: 2.7rem;
+  margin: 1rem 0;
+  justify-content: space-between;
+}
+
+.food-detail .item-info span {
+  color: var(--primary);
+  font-weight: bolder;
+  font-size: 2.7rem;
+  align-items: end;
+}
+
+.food-detail .item-info p {
+  color: var(--light-dark);
+  font-size: 2rem;
+}
+
+.total-container {
+  display: flex;
+  flex-direction: column;
+  background: var(--primary-fade2);
+  padding-bottom: 20%;
+}
+
+.quantity-detail,
+.total-detail {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2.5rem;
+}
+
+.total-detail {
+  padding: 2.5rem;
+}
+
+.quantity-head,
+.total-head {
+  margin-right: auto;
+  font-weight: 500;
+  font-size: 2.7rem;
+}
+
+.quantity-detail i {
+  font-size: 3.5rem;
+  align-items: end;
+  cursor: pointer;
+  color: var(--primary);
+}
+
+.quantity-detail span,
+.total-detail span {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0 1.5rem;
+  align-items: end;
+  cursor: pointer;
+}
+
+.total-container .btn-field {
+  margin: 0 2.5rem;
+}
+
+.total-container .btn-field .btn {
+  padding: 1.5rem 0;
 }
 
 /* ============================================ intro */
