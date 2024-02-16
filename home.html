@@ -139,16 +139,21 @@
         box.classList.add("box");
 
         const image = document.createElement("img");
-        image.src = "images/" + category.ImagePath + ".png"; // Assuming images are in JPG format
+        image.src = "images/" + category.ImagePath + ".png";
         image.alt = category.Name;
 
         const name = document.createElement("h3");
         name.innerText = category.Name;
 
         const checkMoreLink = document.createElement("a");
-        checkMoreLink.href = "list.html";
+        checkMoreLink.href = "list.html?categoryId=" + category.Id; // Pass category ID as a query parameter
         checkMoreLink.classList.add("btn1");
         checkMoreLink.innerText = "Check More";
+
+        // Add event listener to store the selected category ID in session storage
+        checkMoreLink.addEventListener("click", function () {
+          sessionStorage.setItem("selectedCategoryId", category.Id);
+        });
 
         // Append elements to the box
         box.appendChild(image);

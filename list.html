@@ -39,14 +39,8 @@
     <section class="list" id="list">
       <h3 class="heading" id="category-name">Category</h3>
 
-      <div class="box-container">
-        <div class="box">
-          <img src="" alt="" id="img" />
-          <h3 id="itemName">Tasty Food</h3>
-          <p>Price <span id="itemPrice">$15.99</span></p>
-          <a href="#" class="btn">Add to cart</a>
-        </div>
-      </div>
+      <div class="box-container" id="box-container">
+        
     </section>
     <!-- cart section end -->
 
@@ -78,6 +72,68 @@
       const app = initializeApp(firebaseConfig);
 
       const db = getDatabase(app);
+
+      let boxContainer = document.getElementById("box-container");
+
+      // Retrieve the category ID stored in session storage
+      let categoryId = sessionStorage.getItem("selectedCategoryId");
+
+      // Fetch food data based on the retrieved category ID
+      get(child(ref(db), "Foods"))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            snapshot.forEach((foodSnapshot) => {
+              const food = foodSnapshot.val();
+              if (food.CategoryId === parseInt(categoryId)) {
+                const box = createBox(food);
+                boxContainer.appendChild(box);
+              }
+            });
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+      // Function to create a new .box element
+      function createBox(food) {
+        const box = document.createElement("div");
+        box.classList.add("box");
+
+        const image = document.createElement("img");
+        image.src = food.ImagePath;
+        image.alt = food.Title;
+
+        const name = document.createElement("h3");
+        name.innerText = food.Title;
+
+        const itemPrice = document.createElement("span"); // Change to span element
+        itemPrice.innerText = "₱ " + food.Price; // Price inside span element
+
+        const priceParagraph = document.createElement("p");
+        priceParagraph.innerHTML = "Price ";
+        priceParagraph.appendChild(itemPrice);
+
+        const addToCartLink = document.createElement("a");
+        addToCartLink.href = "#"; 
+        addToCartLink.classList.add("btn");
+        addToCartLink.innerText = "Add to cart";
+
+        // Add elements to the box
+        box.appendChild(image);
+        box.appendChild(name);
+        box.appendChild(priceParagraph);
+        box.appendChild(addToCartLink);
+
+        return box;
+      }
+
+      // Add event listener to anchor tag in header icons
+      document.querySelector(".icons a").addEventListener("click", function() {
+        sessionStorage.removeItem("selectedCategoryId"); // Remove selectedCategoryId from session storage
+      });
     </script>
   </body>
 </html>
