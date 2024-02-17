@@ -30,7 +30,7 @@
     <!-- header section start -->
     <header class="food-detail">
       <div class="icons">
-        <a href="home.html"><i class="bx bx-left-arrow-alt"></i></a>
+        <a href="list.html"><i class="bx bx-left-arrow-alt"></i></a>
       </div>
     </header>
     <!-- header section end -->
@@ -123,6 +123,11 @@
         .catch((error) => {
           console.error(error);
         });
+
+      // remove category id and go back to the category
+      document.querySelector(".icons a").addEventListener("click", function () {
+        sessionStorage.removeItem("selectedFoodid");
+      });
     </script>
   </body>
 </html>

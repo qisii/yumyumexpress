@@ -454,7 +454,8 @@ header.food-detail {
 }
 
 .food-detail .item-info .des-content {
-  max-height: 25rem;
+  max-height: 35rem;
+  /* margin-bottom: 2rem; */
 }
 
 .food-detail .item-info p {
