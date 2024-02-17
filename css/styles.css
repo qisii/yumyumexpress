@@ -408,6 +408,7 @@ header.food-detail {
 
 section.food-detail {
   padding: 0;
+  min-height: 100vh;
 }
 
 .food-detail .image img {
@@ -422,7 +423,7 @@ section.food-detail {
 
 .food-detail .item-info .heading {
   padding: 0;
-  margin-top: 2rem;
+  margin: 3rem 0;
   color: var(--dark);
   font-size: 2.9rem;
   display: flex;
@@ -452,7 +453,7 @@ section.food-detail {
   display: flex;
   flex-direction: column;
   background: var(--primary-fade2);
-  padding-bottom: 20%;
+  padding-bottom: 10%;
 }
 
 .quantity-detail,
@@ -762,7 +763,6 @@ form .field {
 
 /* ===========================================media queries */
 
-/* tablet */
 @media (max-width: 991px) {
   html {
     font-size: 55%;
@@ -775,9 +775,24 @@ form .field {
   section {
     padding: 2rem;
   }
+
+  .total-container {
+    padding-bottom: auto;
+    /* height: 40%; */
+  }
+
+  .food-detail .image img {
+    width: 100%;
+    height: 40rem;
+    object-fit: cover;
+  }
+
+  .quantity-detail,
+  .total-detail {
+    margin: 2% 0;
+  }
 }
 
-/* smartphone */
 @media (max-width: 768px) {
   header .icons #menu-bars {
     display: inline-block;
