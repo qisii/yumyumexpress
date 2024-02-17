@@ -593,6 +593,67 @@ header.order {
   padding: 1.5rem 0;
 }
 
+.order-detail .fa-times {
+  margin: 0 1rem;
+}
+
+/* ============================================ order list */
+
+.order .row-container {
+  display: grid;
+  padding: 0 1rem 4rem 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+  gap: 1rem;
+}
+
+.order .row-container .row {
+  padding: 2rem;
+  background: var(--light);
+  border-radius: 0.9rem;
+  /* border: 0.1rem solid rgba(0, 0, 0, 0.2); */
+  box-shadow: var(--box-shadow);
+
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.order .total-detail {
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.order .detail,
+.order .total-detail {
+  display: flex;
+  align-items: center;
+}
+
+.order .detail {
+  margin-bottom: 0.5rem;
+}
+
+.order .name,
+.order .total-head {
+  margin-right: auto;
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.order .name,
+.order p {
+  font-size: 1.5rem;
+}
+
+.order .total-detail #totalPrice {
+  font-weight: bold;
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.order .fa-times {
+  margin: 0 1rem;
+}
+
 /* ============================================ intro */
 .intro {
   padding: 0 9%;
