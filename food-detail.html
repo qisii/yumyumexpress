@@ -36,21 +36,23 @@
     <!-- header section end -->
 
     <!-- food-detail section start -->
-    <section class="food-detail" id="food-detail">
-      <div class="image">
-        <img src="images/food/Bacon and Cheese Heaven.jpg" alt="" />
+    <form action="" class="food-detail">
+      <div class="food-detail" id="food-detail">
+        <div class="image">
+          <img src="" id="img" alt="" />
+        </div>
+
+        <div class="item-info">
+          <h3 class="heading" id="name"></h3>
+          <h6 class="item-head">Price <span id="itemPrice"></span></h6>
+          <h6 class="des-head">Details</h6>
+          <div class="des-content">
+            <p id="description"></p>
+          </div>
+        </div>
       </div>
 
-      <div class="item-info">
-        <h3 class="heading">Name</h3>
-        <h6 class="item-head">Price <span id="itemPrice">₱ 23</span></h6>
-        <h6 class="des-head">Details</h6>
-        <p id="description">
-          Lorem ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum
-          ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum
-          ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum ipsum
-        </p>
-      </div>
+      <div class="line"></div>
 
       <div class="quantity-detail">
         <h6 class="quantity-head">Quantity</h6>
@@ -67,7 +69,8 @@
           <button class="btn" type="submit">Add to cart</button>
         </div>
       </div>
-    </section>
+    </form>
+
     <!-- food-detail section end -->
 
     <!-- custom js file -->
@@ -84,7 +87,6 @@
         get,
       } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-      // Your web app's Firebase configuration
       const firebaseConfig = {
         apiKey: "AIzaSyACybXWMQQyN1QFhEbiLTfZ0n-bAVHQqII",
         authDomain: "yumyum-781e7.firebaseapp.com",
@@ -94,10 +96,33 @@
         appId: "1:722586076935:web:12f241bde223a2eb5f27a2",
       };
 
-      // Initialize Firebase
       const app = initializeApp(firebaseConfig);
 
       const db = getDatabase(app);
+
+      // Retrieve the food ID stored in session storage
+      let foodId = sessionStorage.getItem("selectedFoodid");
+
+      // Fetch food data based on the retrieved food ID
+      const foodRef = child(ref(db), "Foods/" + foodId);
+      get(foodRef)
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            const foodData = snapshot.val();
+            // Update the HTML elements with the fetched food data
+            document.getElementById("img").src = foodData.ImagePath;
+            document.getElementById("name").innerText = foodData.Title;
+            document.getElementById("itemPrice").innerText =
+              "₱ " + foodData.Price.toFixed(2);
+            document.getElementById("description").innerText =
+              foodData.Description;
+          } else {
+            console.log("No such food found");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     </script>
   </body>
 </html>

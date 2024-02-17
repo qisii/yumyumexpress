@@ -114,9 +114,15 @@
         priceParagraph.appendChild(itemPrice);
 
         const addToCartLink = document.createElement("a");
-        addToCartLink.href = "food-detail.html";
+        addToCartLink.href = "food-detail.html?id=" + food.Id;
         addToCartLink.classList.add("btn");
         addToCartLink.innerText = "Add to cart";
+
+        // Add event listener to store the selected category ID in session storage
+        addToCartLink.addEventListener("click", function () {
+          sessionStorage.setItem("selectedFoodid", food.Id);
+          window.location.href = addToCartLink.href;
+        });
 
         // Add elements to the box
         box.appendChild(image);
