@@ -40,7 +40,9 @@ section.categories,
 section.account,
 section.cart,
 section.order,
-section.list {
+section.list,
+section.order-summary,
+section.order-detail {
   background-image: url("/images/bg-2.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -143,7 +145,9 @@ header.account,
 header.cart,
 header.order,
 header.list,
-header.food-detail {
+header.food-detail,
+header.order-detail,
+header.order-summary {
   position: absolute;
   top: 0;
   left: 1;
@@ -209,33 +213,14 @@ header .icons #menu-bars {
   display: none;
 }
 
-/* account */
-
-header.account {
-  left: 0;
-  padding: 1rem 5%;
-}
-
-/* cart */
-header.cart {
-  left: 0;
-  padding: 1rem 5%;
-}
-
-/* order */
-header.order {
-  left: 0;
-  padding: 1rem 5%;
-}
-
 /* list */
-header.list {
-  left: 0;
-  padding: 1rem 5%;
-}
-
-/* food-detail */
-header.food-detail {
+header.account,
+header.list,
+header.food-detail,
+header.order-detail,
+header.order-summary,
+header.cart,
+header.order {
   left: 0;
   padding: 1rem 5%;
 }
@@ -513,6 +498,101 @@ header.food-detail {
   padding: 1.5rem 0;
 }
 
+/* ============================================  order-detail */
+.order-detail .content {
+  padding: 0 1rem 2rem 1rem;
+}
+.order-detail .shipping-info,
+.order-detail .address-info,
+.order-detail .method-info {
+  margin-bottom: 2rem;
+}
+
+.order-detail h6 {
+  font-weight: 500;
+  font-size: 2.5rem;
+  margin: 1.5rem 0;
+}
+
+.order-detail p {
+  font-size: 2rem;
+  color: var(--light-dark);
+}
+
+.order-detail .highlight {
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.order-detail .line {
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border: 0.1rem solid var(--primary-fade);
+}
+
+.item-wrapper {
+  height: 220px;
+  width: 100%;
+  overflow-y: scroll;
+  margin: 2.5rem 0;
+  background: var(--primary-fade2);
+}
+
+.order-detail .card {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.5fr;
+  padding: 2rem;
+  gap: 1rem;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.order-detail .image {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.order-detail .detail {
+  width: 100%;
+}
+
+.order-detail .detail .name {
+  font-weight: 500;
+}
+
+.order-total .subtotal-detail,
+.order-total .delivery-detail,
+.order-total .total-detail {
+  display: flex;
+  align-items: center;
+}
+
+.order-detail .total-detail {
+  padding: 0;
+}
+
+.order-total .subtotal-head,
+.order-total .delivery-head,
+.order-total .total-head {
+  margin-right: auto;
+  font-weight: 500;
+  font-size: 2.5rem;
+}
+
+.order-detail .total-detail #totalPrice {
+  font-weight: bold;
+  font-size: 2.7rem;
+  color: var(--primary);
+}
+
+.order-total .btn-field .btn {
+  padding: 1.5rem 0;
+}
+
 /* ============================================ intro */
 .intro {
   padding: 0 9%;
@@ -773,8 +853,6 @@ form .field {
 .toast.account .message {
   color: var(--light-dark);
 }
-
-/* ============================================  */
 
 /* ===========================================media queries */
 
