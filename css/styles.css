@@ -607,7 +607,8 @@ header.order {
   color: var(--primary);
 }
 
-.order-total .btn-field .btn {
+.order-total .btn-field .btn,
+.order-total .btn-field .btn3 {
   padding: 1.5rem 0;
 }
 
@@ -1094,17 +1095,20 @@ select {
 }
 
 .error-toast {
-  top: 100%;
+  top: -100%;
   background-color: rgba(255, 0, 0, 0.164);
   color: red;
   min-width: 93%;
   max-width: 100%;
 }
 
-.received-toast,
-.checkout-toast {
+.received-toast {
   /* top: clamp(15%, 8%, 20%); */
   top: clamp(-15%, -8%, -20%);
+}
+
+.checkout-toast {
+  top: -100%;
 }
 
 .success-toast {
@@ -1152,18 +1156,26 @@ select {
 .added-toast.active,
 .success-toast.active {
   position: fixed;
-  top: 8%;
+  z-index: 99999;
+  top: 2%;
 }
 
 .error-toast.active {
   position: fixed;
-  top: 8%;
+  z-index: 99999;
+  top: 2%;
 }
 
-.received-toast.active,
+.received-toast.active {
+  position: fixed;
+  z-index: 99999;
+  top: 2%;
+}
+
 .checkout-toast.active {
   position: fixed;
-  top: clamp(15%, 8%, 20%);
+  z-index: 99999;
+  top: 2%;
 }
 /* ===========================================media queries */
 
