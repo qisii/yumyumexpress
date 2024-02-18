@@ -939,7 +939,7 @@ form .field {
 .error-toast,
 .received-toast {
   position: absolute;
-  top: 8%;
+  top: -8%;
   left: 50%;
   min-width: 90%;
   max-width: 100%;
@@ -953,22 +953,20 @@ form .field {
 }
 
 .error-toast {
-  top: -10%;
+  top: 100%;
   background-color: rgba(255, 0, 0, 0.164);
   color: red;
+  min-width: 93%;
+  max-width: 100%;
 }
 
 .received-toast {
+  /* top: clamp(15%, 8%, 20%); */
   top: clamp(-15%, -8%, -20%);
 }
 
 .success-toast {
   min-width: 86%;
-  max-width: 100%;
-}
-
-.error-toast {
-  min-width: 93%;
   max-width: 100%;
 }
 
@@ -1017,7 +1015,7 @@ form .field {
 
 .error-toast.active {
   position: fixed;
-  top: 10%;
+  top: 8%;
 }
 
 .received-toast.active {
