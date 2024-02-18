@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>yumyumexpress</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/logo2.png" />
+
+    <!-- custom css file -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- boxicons cdn -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- view -->
+    <meta name="view-transition" content="same-origin" />
+  </head>
+  <body>
+    <!-- header section start -->
+    <header class="order-detail">
+      <div class="icons">
+        <a href="order.html"><i class="bx bx-left-arrow-alt"></i></a>
+      </div>
+    </header>
+    <!-- header section end -->
+
+    <!-- order section start-detail -->
+    <section class="order-detail" id="order-detail">
+      <h3 class="heading">Order Summary</h3>
+      <div class="content">
+        <div class="line"></div>
+        <form action="" id="checkoutForm">
+          <div class="address-info">
+            <h6>Delivery Address</h6>
+
+            <div class="field input-field">
+              <input
+                type="text"
+                placeholder="Complete Name"
+                id="completeNmae"
+                class="input"
+              />
+            </div>
+
+            <div class="field input-field">
+              <input
+                type="text"
+                placeholder="Phone Number"
+                id="phone"
+                class="input"
+              />
+            </div>
+
+            <div class="field input-field">
+              <input
+                type="text"
+                placeholder="Complete Address"
+                id="completeAddress"
+                class="input"
+              />
+            </div>
+          </div>
+          <div class="line"></div>
+          <div class="method-info">
+            <h6>Payment Method</h6>
+            <div class="field input-field">
+              <select id="payment-box" class="payment-box">
+                <option value="" disabled selected>
+                  Select payment method
+                </option>
+                <option value="credit-card">Credit Card</option>
+                <option value="paypal">PayPal</option>
+              </select>
+              <i class="bx bx-chevron-down"></i>
+            </div>
+          </div>
+          <div class="line"></div>
+          <div class="item-wrapper">
+            <div class="card">
+              <img
+                src="images/food/Chicken Avocado Bliss.jpg"
+                alt=""
+                class="image"
+              />
+              <div class="detail">
+                <p class="name">Chicken Avocado Bliss</p>
+                <p>
+                  <span id="price">₱ 150</span><i class="fas fa-times"></i
+                  ><span id="quantity">2</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+              <img
+                src="images/food/Classic Beef Burger.jpg"
+                alt=""
+                class="image"
+              />
+              <div class="detail">
+                <p class="name">Classic Beef Burger</p>
+                <p>
+                  <span id="price">₱ 150</span><i class="fas fa-times"></i
+                  ><span id="quantity">2</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+              <img
+                src="images/food/BBQ Chicken Delight.jpg"
+                alt=""
+                class="image"
+              />
+              <div class="detail">
+                <p class="name">BBQ Chicken Delight</p>
+                <p>
+                  <span id="price">₱ 150</span><i class="fas fa-times"></i
+                  ><span id="quantity">1</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="order-total">
+            <div class="subtotal-detail">
+              <h6 class="subtotal-head">Subtotal</h6>
+              <p>₱ 900.00</p>
+            </div>
+
+            <div class="delivery-detail">
+              <h6 class="delivery-head">Delivery</h6>
+              <p>₱ 10.00</p>
+            </div>
+
+            <div class="total-detail">
+              <h6 class="total-head">Total</h6>
+              <p id="totalPrice">₱ 910.00.00</p>
+            </div>
+            <div class="btn-field">
+              <button class="btn" type="submit">Place Order</button>
+            </div>
+          </div>
+        </form>
+
+        <div class="checkout-toast" id="checkout-toast">
+          <div class="message">
+            <p>Placed order sucessfully</p>
+            <p>Please check your 'Order List' to check this order.</p>
+          </div>
+          <i class="bx bx-check"></i>
+        </div>
+      </div>
+    </section>
+    <!-- order section end -->
+    <!-- custom js file -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

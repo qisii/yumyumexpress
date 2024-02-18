@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
 :root {
   --light-grey: #f1f0f6;
-  --grey2: #8b8b8b;
+  --grey2: #666666e1;
   --light-dark: #666;
   --dark-grey: #4d4d4d;
   --dark: #1f1f1f;
@@ -366,12 +366,6 @@ header.order {
   margin-right: 1rem;
   font-size: 2.5rem;
 } */
-
-/* ============================================ cart */
-.cart .box-container {
-  padding: 0 1rem;
-}
-
 /* ============================================ order */
 .order .box-container {
   padding: 0 1rem;
@@ -501,6 +495,10 @@ header.order {
   cursor: pointer;
 }
 
+.total-detail #totalPrice {
+  margin: 0;
+}
+
 .total-container .btn-field {
   margin: 0 2.5rem;
 }
@@ -519,13 +517,19 @@ header.order {
   margin-bottom: 2rem;
 }
 
-.order-detail h6 {
+.order-detail h6,
+.cart .content h6 {
   font-weight: 500;
   font-size: 2.5rem;
   margin: 1.5rem 0;
 }
 
-.order-detail p {
+.cart .content h6 {
+  margin: 1rem 0;
+}
+
+.order-detail p,
+.cart .content p {
   font-size: 2rem;
   color: var(--light-dark);
 }
@@ -553,7 +557,7 @@ header.order {
 
 .order-detail .card {
   display: grid;
-  grid-template-columns: 0.5fr 1fr 0.5fr;
+  grid-template-columns: 0.3fr 1fr;
   padding: 2rem;
   gap: 1rem;
   justify-content: space-around;
@@ -582,19 +586,22 @@ header.order {
   align-items: center;
 }
 
-.order-detail .total-detail {
+.order-detail .total-detail,
+.cart .total-detail {
   padding: 0;
 }
 
 .order-total .subtotal-head,
 .order-total .delivery-head,
-.order-total .total-head {
+.order-total .total-head,
+.cart .content h6 {
   margin-right: auto;
   font-weight: 500;
   font-size: 2.5rem;
 }
 
-.order-detail .total-detail #totalPrice {
+.order-detail .total-detail #totalPrice,
+.cart .content .total-detail #totalPrice {
   font-weight: bold;
   font-size: 2.7rem;
   color: var(--primary);
@@ -610,14 +617,16 @@ header.order {
 
 /* ============================================ order list */
 
-.order .row-container {
+.order .row-container,
+.cart .row-container {
   display: grid;
   padding: 0 1rem 4rem 1rem;
   grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
   gap: 1rem;
 }
 
-.order .row-container .row {
+.order .row-container .row,
+.cart .row-container .row {
   padding: 2rem;
   background: var(--light);
   border-radius: 0.9rem;
@@ -669,6 +678,111 @@ header.order {
 
 .order .fa-times {
   margin: 0 1rem;
+}
+
+/* ============================================ cart */
+
+.row-wrapper {
+  height: 50vh;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.cart .row-container .row .card {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr 0;
+  gap: 1rem;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.cart .quantity-detail,
+.cart .buttons-container {
+  display: flex;
+  padding: 0;
+  align-items: center;
+}
+
+.cart .quantity-detail i {
+  font-size: 2.7rem;
+  cursor: pointer;
+  color: var(--primary);
+}
+
+.cart .quantity-detail .fa-equals {
+  color: var(--dark);
+  font-size: 2.3rem;
+  margin: 0 auto;
+}
+
+.cart .name {
+  font-size: 2rem;
+  color: var(--dark);
+}
+
+.cart .detail #price {
+  font-weight: 600;
+  font-size: 2rem;
+  margin: 0 auto 0 0;
+}
+
+.cart .detail .btn5 {
+  margin-left: 1.5rem;
+}
+
+.cart .detail #removeBtn {
+  margin: 0 0 0 auto;
+}
+
+.cart .detail #removeBtn,
+.cart .detail #addBtn {
+  background: none;
+  text-decoration: none;
+}
+
+.cart .detail #removeBtn {
+  color: var(--grey2);
+}
+
+.cart .detail #addBtn {
+  color: var(--primary);
+}
+.cart .detail #totalPrice {
+  font-weight: 600;
+  font-size: 2rem;
+  background: var(--primary-fade);
+  margin: 0;
+  padding: 0.2rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.cart .detail #quantity {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0 0.8rem;
+}
+
+.cart .image {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.cart .content {
+  padding: 2rem;
+  border-radius: 0.6rem;
+  background: var(--primary-fade2);
+  box-shadow: var(--box-shadow);
+}
+.cart .content .title {
+  font-weight: bold;
+  margin: 1.5rem 0;
+}
+
+.cart .content .btn a {
+  text-decoration: none;
+  color: var(--light);
 }
 
 /* ============================================ intro */
@@ -746,7 +860,8 @@ form .field {
 }
 
 .field input,
-.field button {
+.field button,
+.field select {
   height: 100%;
   width: 100%;
   font-weight: 400;
@@ -754,7 +869,8 @@ form .field {
   border-radius: 0.4rem;
 }
 
-.field input {
+.field input,
+.field select {
   outline: none;
   font-size: 1.3rem;
   padding: 1.1rem 1rem;
@@ -764,13 +880,16 @@ form .field {
 .field input:focus {
   border-bottom-width: 0.3rem;
 }
-.eye-icon {
+
+.eye-icon,
+.bx-chevron-down {
   position: absolute;
   top: 50%;
   right: 0.5rem;
-  transform: translateY(-40%);
+  transform: translateY(-50%);
   color: var(--grey2);
   padding: 0.3rem;
+  font-size: 2.5rem;
 }
 
 .form-link {
@@ -812,18 +931,22 @@ form .field {
   margin-top: 20%;
 }
 
-.account .content form .field {
+.account .content form .field,
+.order-detail .content form .field {
   height: 6rem;
   border-radius: 0.5rem;
   box-shadow: var(--box-shadow);
   /* margin-bottom: 1.5rem; */
 }
-.account .content form .field input {
+.account .content form .field input,
+.order-detail .content form .field input {
   font-size: 1.5rem;
   border: none;
 }
 
-.account .content form .field input:focus {
+.account .content form .field input:focus,
+.order-detail .content form .field input:focus,
+.order-detail .content form .field .payment:focus {
   border: 0.1rem solid var(--primary);
 }
 
@@ -860,6 +983,23 @@ form .field {
 .account .title {
   margin-right: 25%;
 } */
+
+/* ============================================ select */
+
+select {
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 0 !important;
+  background-image: none;
+  padding: 1rem;
+  width: 100%;
+}
+
+.payment-box option {
+  font-size: 1rem;
+}
 
 /* ============================================ order */
 .order .title {
@@ -937,7 +1077,8 @@ form .field {
 .added-toast,
 .success-toast,
 .error-toast,
-.received-toast {
+.received-toast,
+.checkout-toast {
   position: absolute;
   top: -8%;
   left: 50%;
@@ -960,7 +1101,8 @@ form .field {
   max-width: 100%;
 }
 
-.received-toast {
+.received-toast,
+.checkout-toast {
   /* top: clamp(15%, 8%, 20%); */
   top: clamp(-15%, -8%, -20%);
 }
@@ -1018,7 +1160,9 @@ form .field {
   top: 8%;
 }
 
-.received-toast.active {
+.received-toast.active,
+.checkout-toast.active {
+  position: fixed;
   top: clamp(15%, 8%, 20%);
 }
 /* ===========================================media queries */
