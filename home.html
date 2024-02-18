@@ -151,6 +151,7 @@
         // Add event listener to store the selected category ID in session storage
         checkMoreLink.addEventListener("click", function () {
           sessionStorage.setItem("selectedCategoryId", category.Id);
+          sessionStorage.setItem("selectedCategoryName", category.Name);
         });
 
         // Append elements to the box
