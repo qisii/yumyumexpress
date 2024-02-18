@@ -36,7 +36,7 @@
     <!-- header section end -->
 
     <!-- food-detail section start -->
-    <form action="" class="food-detail">
+    <form action="" id="addToCartForm" class="food-detail">
       <div class="food-detail" id="food-detail">
         <div class="image">
           <img src="" id="img" alt="" />
@@ -66,10 +66,19 @@
           <span id="totalPrice">₱ 100.00</span>
         </div>
         <div class="btn-field">
-          <button class="btn" type="submit">Add to cart</button>
+          <button class="btn" id="addToCartBtn" type="submit">
+            Add to cart
+          </button>
         </div>
       </div>
     </form>
+
+    <div class="added-toast" id="added-toast">
+      <div class="message">
+        <p>Added to cart</p>
+      </div>
+      <i class="bx bx-check"></i>
+    </div>
 
     <!-- food-detail section end -->
 
@@ -122,6 +131,19 @@
         })
         .catch((error) => {
           console.error(error);
+        });
+
+      document
+        .getElementById("addToCartForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+
+          // Show the "Added to cart" toast
+          var toast = document.querySelector(".added-toast");
+          toast.classList.add("active");
+          setTimeout(() => {
+            toast.classList.remove("active");
+          }, 2000);
         });
 
       // remove category id and go back to the category

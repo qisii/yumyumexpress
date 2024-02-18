@@ -89,14 +89,12 @@
         <!-- <div class="line"></div> -->
       </div>
 
-      <!-- <div class="toast-box"> -->
-      <div class="toast" id="toast">
+      <div class="error-toast" id="error-toast">
         <div class="message">
-          <h3>Error!</h3>
-          <p>User data not found. Please try again.</p>
+          <p>Error !</p>
+          <p class="error-box">message</p>
         </div>
         <i class="bx bx-x close-btn"></i>
-        <!-- </div> -->
       </div>
     </section>
 
@@ -131,9 +129,11 @@
       const auth = getAuth(app);
 
       const signupForm = document.getElementById("signupForm");
-      const toast = document.querySelector(".toast");
-      const errorMessageElement = document.querySelector("#toast .message p");
-      const closeBtn = document.querySelector("#toast .close-btn");
+      const toast = document.querySelector(".error-toast");
+      const errorMessageElement = document.querySelector(
+        ".error-toast .message .error-box"
+      );
+      const closeBtn = document.querySelector(".error-toast .close-btn");
 
       signupForm.addEventListener("submit", function (event) {
         event.preventDefault(); // prevent form submission

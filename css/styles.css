@@ -10,6 +10,8 @@
   --primary: #ffc40c;
   --primary-fade: #ffc40c;
   --primary-fade2: #ffc20c11;
+  --light-green: rgb(218, 238, 218);
+  --green: rgb(85, 148, 85);
   --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 }
 
@@ -77,7 +79,8 @@ section.order-detail {
 
 .btn,
 .btn1,
-.btn2 {
+.btn2,
+.btn3 {
   /* height: 2rem; */
   /* width: 100%; */
   margin-top: 1rem;
@@ -110,6 +113,14 @@ section.order-detail {
   background: var(--light);
   color: var(--dark);
   border: 0.1rem solid var(--dark);
+}
+
+.btn3 {
+  height: 100%;
+  width: 100%;
+  background: var(--grid);
+  color: var(--dark);
+  /* border: 0.1rem solid var(--dark); */
 }
 
 .btn:hover {
@@ -617,9 +628,13 @@ header.order {
   align-items: flex-start;
 }
 
+.order .row-container .row a {
+  text-decoration: none;
+}
+
 .order .total-detail {
   padding: 0;
-  margin: 1rem 0;
+  margin: 1.5rem 0 0 0;
 }
 
 .order .detail,
@@ -637,11 +652,13 @@ header.order {
   margin-right: auto;
   font-weight: 500;
   font-size: 2rem;
+  color: var(--dark);
 }
 
 .order .name,
 .order p {
   font-size: 1.5rem;
+  color: var(--dark);
 }
 
 .order .total-detail #totalPrice {
@@ -915,6 +932,97 @@ form .field {
   color: var(--light-dark);
 }
 
+/* =========================================== added to cart toast */
+
+.added-toast,
+.success-toast,
+.error-toast,
+.received-toast {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  min-width: 90%;
+  max-width: 100%;
+  transform: translateX(-50%);
+  background: var(--light-green);
+  color: var(--green);
+  border-radius: 0.5rem;
+  z-index: 999;
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+}
+
+.error-toast {
+  top: -10%;
+  background-color: rgba(255, 0, 0, 0.164);
+  color: red;
+}
+
+.received-toast {
+  top: clamp(-15%, -8%, -20%);
+}
+
+.success-toast {
+  min-width: 86%;
+  max-width: 100%;
+}
+
+.error-toast {
+  min-width: 93%;
+  max-width: 100%;
+}
+
+.added-toast .message,
+.success-toast .message {
+  display: flex;
+}
+
+.added-toast .message p,
+.success-toast .message p,
+.error-toast .message p {
+  margin-left: 0.5rem;
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.error-toast .message .error-box {
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.bx-check,
+.bx-x {
+  position: absolute;
+  font-size: 3rem;
+  color: var(--green);
+  margin-right: 1.5rem;
+}
+
+.bx-x {
+  color: red;
+}
+
+.bx-check,
+.bx-x {
+  right: 1rem;
+  top: 1.7rem;
+}
+
+.added-toast.active,
+.success-toast.active {
+  position: fixed;
+  top: 8%;
+}
+
+.error-toast.active {
+  position: fixed;
+  top: 10%;
+}
+
+.received-toast.active {
+  top: clamp(15%, 8%, 20%);
+}
 /* ===========================================media queries */
 
 @media (max-width: 991px) {

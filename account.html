@@ -81,11 +81,11 @@
             </div>
           </form>
         </div>
-        <div class="toast account" id="toast account">
+        <div class="success-toast" id="success-toast">
           <div class="message">
-            <h3>Success!</h3>
-            <p>Updated successfully</p>
+            <p>Updated Successfully</p>
           </div>
+          <i class="bx bx-check"></i>
         </div>
       </div>
     </section>
@@ -120,10 +120,7 @@
       const updateForm = document.getElementById("updateForm");
       const phoneInput = document.getElementById("phone");
       const phoneReminder = document.getElementById("phoneReminder");
-      const toast = document.querySelector(".toast.account");
-      const errorMessageElement = document.querySelector(
-        "#toast#account .message p"
-      );
+      const toast = document.querySelector(".success-toast");
 
       // Function to update reminder message based on phone number
       function updateReminder() {
