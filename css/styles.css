@@ -123,6 +123,14 @@ section.order-detail {
   /* border: 0.1rem solid var(--dark); */
 }
 
+.btn4 {
+  height: 100%;
+  width: 100%;
+  background: var(--primary-fade2);
+  color: var(--primary);
+  /* border: 0.1rem solid var(--dark); */
+}
+
 .btn:hover {
   background: var(--light);
   color: var(--primary);
@@ -607,7 +615,7 @@ header.order {
   color: var(--primary);
 }
 
-.order-total .btn-field .btn,
+.order-total .btn-field .btn4,
 .order-total .btn-field .btn3 {
   padding: 1.5rem 0;
 }
