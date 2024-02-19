@@ -30,7 +30,7 @@
     <!-- header section start -->
     <header class="order-detail">
       <div class="icons">
-        <a href="order.html"><i class="bx bx-left-arrow-alt"></i></a>
+        <a href="cart.html"><i class="bx bx-left-arrow-alt"></i></a>
       </div>
     </header>
     <!-- header section end -->
@@ -165,5 +165,19 @@
     <!-- order section end -->
     <!-- custom js file -->
     <script src="js/script.js"></script>
+    <script type="module">
+      document
+        .getElementById("checkoutForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+
+          // Show the "Added to cart" toast
+          var toast = document.querySelector(".checkout-toast");
+          toast.classList.add("active");
+          setTimeout(() => {
+            toast.classList.remove("active");
+          }, 2000);
+        });
+    </script>
   </body>
 </html>
